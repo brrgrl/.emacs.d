@@ -51,8 +51,8 @@
 ;; -CheckVer
 
 ;; BetterGC
-(defvar better-gc-cons-threshold 134217728 ; 128mb
-  "The default value to use for `gc-cons-threshold'.
+  (defvar better-gc-cons-threshold 100000000 ; 100mb
+"The default value to use for `gc-cons-threshold'.
 
 If you experience freezing, decrease this.  If you experience stuttering, increase this.")
 
@@ -100,6 +100,16 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (update-to-load-path (expand-file-name "elisp" user-emacs-directory))
 ;; -LoadPath
 
+(pixel-scroll-precision-mode)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "<prior>") #'left-char)
+(global-set-key (kbd "<next>") #'right-char)
+
+(setq warning-minimum-level :emergency)
+
+(setenv "LOCAL_REPO_DIR" "/home/andrew/work/colgate/cp-saa-media")
 ;; Constants
 
 (require 'init-const)
@@ -208,7 +218,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (require 'init-erc)
 
-(require 'init-mu4e)
+;; (require 'init-mu4e)
 
 (require 'init-tramp)
 
@@ -229,6 +239,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (require 'init-zone)
 
+(require 'init-beep)
+
 ;; InitPrivate
 ;; Load init-private.el if it exists
 (when (file-exists-p (expand-file-name "init-private.el" user-emacs-directory))
@@ -238,3 +250,4 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (provide 'init)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
+(put 'upcase-region 'disabled nil)

@@ -34,7 +34,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
-
+(add-to-list 'image-types 'svg)
 ;; LSPPac
 (use-package lsp-mode
   :defer t

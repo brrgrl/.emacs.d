@@ -60,7 +60,7 @@
   (ivy-height 10)
   (ivy-on-del-error-function nil)
   (ivy-magic-slash-non-match-action 'ivy-magic-slash-non-match-create)
-  (ivy-count-format "【%d/%d】")
+  (ivy-count-format "(%d/%d) ")
   (ivy-wrap t)
   :config
   (defun counsel-goto-local-home ()

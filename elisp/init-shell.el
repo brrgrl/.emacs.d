@@ -38,6 +38,9 @@
 (eval-when-compile
   (require 'init-const))
 
+(require 'exec-path-from-shell)
+(exec-path-from-shell-copy-env "SSH_AGENT_PID")
+(exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
 ;; AweshellPac
 (use-package aweshell
   :load-path (lambda () (expand-file-name "site-elisp/aweshell" user-emacs-directory))

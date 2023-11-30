@@ -55,7 +55,7 @@
   (org-latex-listings t)
   (org-deadline-warning-days 7)
   (org-todo-keywords
-   '((sequence "TODO" "IN-PROGRESS" "REVIEW" "|" "DONE" "CANCELED")))
+   '((sequence "TODO" "IN-PROGRESS" "REVIEW" "|" "DONE")))
   (org-agenda-window-setup 'other-window)
   (org-latex-pdf-process
    '("pdflatex -shelnl-escape -interaction nonstopmode -output-directory %o %f"
@@ -73,7 +73,9 @@
    '(;; other Babel languages
      (C . t)
      (python . t)
-     (plantuml . t)))
+     (plantuml . t)
+     (powershell . t)
+     (shell . t)))
   (defun org-export-toggle-syntax-highlight ()
     "Setup variables to turn on syntax highlighting when calling `org-latex-export-to-pdf'."
     (interactive)
@@ -104,6 +106,16 @@
     (setq org-roam-directory (file-truename "~/org/roam")))
   (org-roam-db-autosync-mode))
 ;; -OrgRoamPac
+
+(setq org-capture-templates
+      '(("s" "Standup" entry
+         (file+olp+datetree "~/org/standup.org") "* %?" :tree-type week)
+        ("m" "Meeting" entry
+         (file+olp+datetree "~/org/meeting.org") "* %?" :tree-type week)
+        ("t" "Todo" entry (file+headline "~/org/todo.org" "Tasks")
+         "* TODO %? %^G \n  %U" :empty-lines 1)
+        ("j" "Journal" entry
+         (file+olp+datetree "~/org/notes.org") "* %?" :tree-type week)))
 
 ;; TocOrgPac
 (use-package toc-org
